@@ -24,9 +24,13 @@ interface MainProps {
 }
 export default function Main({ hardCoded }: MainProps) {
   return (
-    <div className="flex bg-dblue gap-1 pb-1  px-1 h-full">
+    <main
+      className="flex bg-dblue gap-1 pb-1  px-1 h-full"
+      role="main"
+      aria-label="Main content"
+    >
       <LeftPanel hardCoded={hardCoded.leftPanel} />
       <RightPanel hardCoded={hardCoded.rightPanel} />
-    </div>
+    </main>
   );
 }

@@ -16,21 +16,25 @@ export default function Header({ hardCoded }: HeaderProps) {
   const headerRef = useRef<HTMLDivElement>(null);
 
   const links = hardCoded.menu.map((item, index) => (
-    <div key={index} className="inline-block">
-      <span
+    <li key={index} className="inline-block">
+      <button
         className={`px-8 text-36 first-letter:text-yellow inline-block
             ${item.dropdown && activeIndex === index ? "bg-black text-white" : ""}
+            ${item.dropdown ? "cursor-pointer" : ""}
             `}
         onClick={() =>
           item.dropdown && setActiveIndex(activeIndex === index ? null : index)
         }
+        aria-expanded={item.dropdown ? activeIndex === index : undefined}
+        aria-haspopup={item.dropdown ? "menu" : undefined}
+        aria-label={`Menu ${item.label}`}
       >
         {item.label}
-      </span>
+      </button>
       {item.dropdown && (
         <Dropdown items={item.dropdown} isOpen={activeIndex === index} />
       )}
-    </div>
+    </li>
   ));
 
   useEffect(() => {
@@ -50,10 +54,14 @@ export default function Header({ hardCoded }: HeaderProps) {
   }, []);
 
   return (
-    <header ref={headerRef} className="bg-dcyan">
-      <div className="inline-flex px-8 relative select-none">
-        <div>{links}</div>
-      </div>
+    <header ref={headerRef} className="bg-dcyan" role="banner">
+      <nav
+        className="inline-flex px-8 relative select-none"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <ul className="flex list-none m-0 p-0">{links}</ul>
+      </nav>
     </header>
   );
 }

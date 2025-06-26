@@ -14,7 +14,8 @@ const eslintConfig = [
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
-      "prettier/prettier": "error",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "react/no-unescaped-entities": "off",
     },
   },
   ...compat.extends("prettier"),

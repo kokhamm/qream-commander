@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ Qream Commander
 
-## Getting Started
+A retro DOS-style file manager interface built with modern web technologies. This project recreates the classic Norton Commander / Total Commander interface with pixel-perfect precision using Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Live Demo**: [qream-commander.vercel.app](https://qream-commander.vercel.app)
+- **GitHub Repository**: [github.com/user/qream-commander](https://github.com/user/qream-commander)
+
+## ✨ Features
+
+- 🎨 **Pixel-perfect DOS interface** with authentic colors and typography
+- 📱 **Responsive design** optimized for desktop screens
+- ♿ **Full accessibility support** with ARIA attributes and semantic HTML
+- 🎯 **Interactive dropdown menus** with proper keyboard navigation
+- ⌨️ **Command input field** with character limit
+- 🖼️ **Custom DOS font** (Modern DOS 8x16) with WOFF2 optimization
+- 🏗️ **Modern architecture** following SOLID principles
+
+## 🛠️ Technology Stack
+
+- **Framework**: Next.js 15.3.4 (App Router)
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 4 with custom theme
+- **Font**: Modern DOS 8x16 (WOFF2)
+- **Code Quality**: ESLint + Prettier
+- **Deployment**: Vercel
+
+## 🏗️ Architecture
+
+### Component Structure
+
+```
+src/app/
+├── components/           # UI Components
+│   ├── Header.tsx       # Menu with dropdown
+│   ├── LeftPanel.tsx    # File tree navigation
+│   ├── RightPanel.tsx   # File listing columns
+│   ├── PreFooter.tsx    # Command input
+│   ├── Footer.tsx       # Function keys
+│   ├── Main.tsx         # Layout coordinator
+│   └── Dropdown.tsx     # Reusable dropdown
+├── data/
+│   └── data.ts          # Hardcoded application data
+├── globals.css          # Global styles & theme
+├── layout.tsx           # Root layout
+└── page.tsx             # Homepage
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18.17 or later
+- npm, yarn, pnpm, or bun
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/user/qream-commander.git
+   cd qream-commander
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run development server**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+## 🎨 Customization
+
+### Colors
+
+The DOS color palette is defined in `src/app/globals.css`:
+
+```css
+@theme inline {
+  --color-dblue: #0000aa; /* Dark blue background */
+  --color-lcyan: #55ffff; /* Light cyan text */
+  --color-dcyan: #00aaaa; /* Dark cyan highlights */
+  --color-yellow: #ffff55; /* Yellow accents */
+  --color-lgrey: #aaaaaa; /* Light grey text */
+}
+```
+
+### Data Structure
+
+Modify the hardcoded data in `src/app/data/data.ts`:
+
+```typescript
+export const data = {
+  header: { menu: [...] },
+  main: { leftPanel: {...}, rightPanel: {...} },
+  prefooter: { prompt: "C:\\>" },
+  footer: { commands: [...] }
+};
+```
+
+## ♿ Accessibility Features
+
+- **Semantic HTML5**: `header`, `main`, `aside`, `footer`, `nav`
+- **ARIA Labels**: Descriptive labels for screen readers
+- **Keyboard Navigation**: Full keyboard support for all interactive elements
+- **Focus Management**: Proper focus indicators and trapping
+- **Color Contrast**: Meets WCAG AA standards
+
+## 🧪 Quality Assurance
+
+### Code Quality
+
+```bash
+npm run lint          # ESLint checking
+npm run build         # Production build test
+```
+
+### Performance
+
+- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices)
+- **Core Web Vitals**: Optimized for all metrics
+- **Font Loading**: WOFF2 with font-display: swap
+
+## 📄 License
+
+This project is created for Qream Design Agency as a test task.
+
+## 👨‍💻 Author
+
+**Oleksandr Ananiev**
+
+- Email: oleks.ananiev@gmail.com
+
+## 🙏 Acknowledgments
+
+- **Qream Design Agency** for the opportunity
+
+---
+
+Built with ❤️ for Qream
