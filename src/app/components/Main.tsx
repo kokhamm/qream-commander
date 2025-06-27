@@ -1,36 +1,24 @@
 import LeftPanel from "@/app/components/LeftPanel";
 import RightPanel from "@/app/components/RightPanel";
+import { LeftPanelProps, RightPanelProps } from "@/app/types";
 
-interface MainProps {
-  hardCoded: {
-    leftPanel: {
-      title: string;
-      slash: string;
-      items: string[];
-      bottomText: string;
-    };
-    rightPanel: {
-      title: string;
-      columns: Array<{
-        title: string;
-        items: Array<{
-          name: string;
-          ext?: string;
-        }>;
-      }>;
-      bottomText: string;
-    };
+interface Props {
+  data: {
+    leftPanel: LeftPanelProps;
+    rightPanel: RightPanelProps;
   };
 }
-export default function Main({ hardCoded }: MainProps) {
-  return (
-    <main
-      className="flex bg-dblue gap-1 pb-1  px-1 h-full"
-      role="main"
-      aria-label="Main content"
-    >
-      <LeftPanel hardCoded={hardCoded.leftPanel} />
-      <RightPanel hardCoded={hardCoded.rightPanel} />
-    </main>
-  );
-}
+
+const Main = ({ data }: Props) => (
+  <main
+    aria-label="Main content"
+    role="main"
+    className="flex bg-dblue gap-1 pb-1 px-1 h-full"
+  >
+    <LeftPanel data={data.leftPanel} />
+
+    <RightPanel data={data.rightPanel} />
+  </main>
+);
+
+export default Main;

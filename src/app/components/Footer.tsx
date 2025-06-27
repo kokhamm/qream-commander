@@ -1,30 +1,32 @@
-interface FooterProps {
-  hardCoded: {
-    commands: Array<{
-      number: number;
-      label: string;
-    }>;
+interface Command {
+  label: string;
+  number: number;
+}
+
+interface Props {
+  data: {
+    commands: Command[];
   };
 }
 
-export default function Footer({ hardCoded }: FooterProps) {
-  const commands = hardCoded.commands.map((command, index) => (
-    <button
-      key={index}
-      className="text-lgrey text-36 bg-transparent border-none p-0"
-      aria-label={`Command ${command.number}: ${command.label}`}
-    >
-      <span className="text-lgrey">{command.number}</span>
-      <span className="text-black bg-dcyan pr-6">{command.label}</span>
-    </button>
-  ));
-  return (
-    <footer
-      className="flex w-full justify-between bg-black"
-      role="contentinfo"
-      aria-label="Command panel"
-    >
-      {commands}
-    </footer>
-  );
-}
+const Footer = ({ data }: Props) => (
+  <footer
+    aria-label="Command panel"
+    role="contentinfo"
+    className="flex w-full justify-between bg-black"
+  >
+    {data.commands.map((item, index) => (
+      <button
+        key={`footer_command_item_${index}`}
+        aria-label={`Command ${item.number}: ${item.label}`}
+        className="text-lgrey text-4xl bg-transparent border-none p-0"
+      >
+        <span className="text-lgrey">{item.number}</span>
+
+        <span className="text-black bg-dcyan pr-6">{item.label}</span>
+      </button>
+    ))}
+  </footer>
+);
+
+export default Footer;

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
   --color-white: #ffffff;
   --color-black: #000000;
   --color-dblue: #0000aa;
@@ -8,24 +8,23 @@
   --color-dcyan: #00aaaa;
   --color-lgrey: #aaaaaa;
   --color-yellow: #ffff55;
-  --text-32: 32px;
-  --text-36: 36px;
 }
 
 @font-face {
   font-family: "ModernDOS8x16";
-  src:
-    url("/fonts/ModernDOS8x16.woff2") format("woff2"),
-    url("/fonts/ModernDOS8x16.woff") format("woff");
+  src: url("/fonts/ModernDOS8x16.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+html,
 body {
-  font-family:
-    "ModernDOS8x16", ui-monospace, SFMono-Regular, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: "ModernDOS8x16", monospace;
   line-height: normal;
   font-style: normal;
   font-weight: 400;
