@@ -1,33 +1,37 @@
 "use client";
+
 import { useState } from "react";
 
-interface PreFooterProps {
-  hardCoded: {
+interface Props {
+  data: {
     prompt: string;
   };
 }
 
-export default function PreFooter({ hardCoded }: PreFooterProps) {
+const PreFooter = ({ data }: Props) => {
   const [inputValue, setInputValue] = useState("");
 
   return (
     <section
-      className="flex items-center w-full bg-black "
-      role="region"
       aria-label="Command input area"
+      role="region"
+      className="flex items-center w-full bg-black "
     >
-      <label htmlFor="command-input" className="text-lgrey text-36 leading-4.5">
-        {hardCoded.prompt}
+      <label htmlFor="commandInput" className="text-lgrey text-4xl">
+        {data.prompt}
       </label>
+
       <input
-        id="command-input"
+        aria-label="Command input field"
+        id="commandInput"
+        maxLength={20}
         type="text"
         value={inputValue}
+        className="text-lgrey text-4xl max-h-8.5 border-none outline-none"
         onChange={(e) => setInputValue(e.target.value)}
-        maxLength={20}
-        className="text-lgrey text-36 leading-4.5 max-h-8.5 border-none outline-none"
-        aria-label="Command input field"
       />
     </section>
   );
-}
+};
+
+export default PreFooter;
